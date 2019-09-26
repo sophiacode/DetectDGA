@@ -8,8 +8,7 @@ from detect.capsule_layers import CapsuleLayer, PrimaryCap, Length
 
 
 class LSTMClassifier(BasicClassifier):
-    """
-    < Predicting domain generation algorithms with long short-term memory networks >
+    """ < Predicting domain generation algorithms with long short-term memory networks >
     """
     def __init__(self, embed_size=128, lstm_unit=128, dropout_r=0.5):
         super().__init__("LSTM")
@@ -25,8 +24,7 @@ class LSTMClassifier(BasicClassifier):
         return x 
 
 class GRUClassifier(BasicClassifier):
-    """
-    < Automatic Detection of Malware-Generated Domains with Recurrent Neural Models >
+    """ < Automatic Detection of Malware-Generated Domains with Recurrent Neural Models >
     """
     def __init__(self, embed_size=128, gru_unit=128, dropout_r=0.5):
         super().__init__("GRU")
@@ -42,8 +40,7 @@ class GRUClassifier(BasicClassifier):
         return x 
 
 class BiLSTMClassifier(BasicClassifier):
-    """
-    < Tweet2vec: Character-based distributed representations for social media >
+    """ < Tweet2vec: Character-based distributed representations for social media >
     """
     def __init__(self, embed_size=128, lstm_unit=64, dropout_r=0.5):
         super().__init__("BiLSTM")
@@ -59,9 +56,8 @@ class BiLSTMClassifier(BasicClassifier):
         return x 
 
 class EXposeClassifier(BasicClassifier):
-    """
-    < eXpose: A character-level convolutional neural network with embeddings 
-        for detecting malicious urls, file paths and registry keys >
+    """ < eXpose: A character-level convolutional neural network with embeddings 
+            for detecting malicious urls, file paths and registry keys >
     """
     def __init__(self, embed_size=32, filters=256, kernels=(2,3,4,5), dropout_r=0.5, fc_unit=1024, fc_layers=3):
         super().__init__("eXpose")
@@ -96,8 +92,7 @@ class EXposeClassifier(BasicClassifier):
         self.model = load_model(model_path, custom_objects={"LayerNormalization": LayerNormalization})
         
 class CNNLSTMClassifier(BasicClassifier):
-    """
-    < Tweet2vec: Learning tweet embeddings using character-level cnn-lstm encoder-decoder >
+    """ < Tweet2vec: Learning tweet embeddings using character-level cnn-lstm encoder-decoder >
     """
     def __init__(self, embed_size=128, filters=128, kernel_size=3, pool_size=2, lstm_unit=64):
         super().__init__("CNNLSTM")
@@ -118,8 +113,7 @@ class CNNLSTMClassifier(BasicClassifier):
         return encode
 
 class StackedCNNClassifier(BasicClassifier):
-    """
-    < Character-level convolutional networks for text classificatio >
+    """ < Character-level convolutional networks for text classificatio >
     """
     def __init__(self, conv_layers = [[128, 3, 2], [128, 2, 2]], fc_layers = [1024], 
                  embed_size=128, threshold=1e-6, dropout_p=0.5):
@@ -150,6 +144,8 @@ class StackedCNNClassifier(BasicClassifier):
         return x
 
 class TCNClassifier(BasicClassifier):
+    """ Our model < CNN-based DGA Detection with High Coverage >
+    """
     def __init__(self, embed_size=128, dilations=None, filters=64, kernel_size=2, n_stacks=1, dropout_r=0.0):
         super().__init__("TCN")
 
@@ -197,6 +193,8 @@ class TCNClassifier(BasicClassifier):
         return out
 
 class AttentionClassifier(BasicClassifier):
+    """ Our model ()
+    """
     def __init__(self, embed_size=128, lstm_unit=64):
         super().__init__("Attention")
         self.embed_size = embed_size
@@ -213,6 +211,8 @@ class AttentionClassifier(BasicClassifier):
         self.model = load_model(model_path, custom_objects=SeqSelfAttention.get_custom_objects())
 
 class CapsuleClassifier(BasicClassifier):
+    """ < DGA CapsNet: 1D Application of Capsule Networks to DGA Detection >
+    """
     def __init__(self, embed_size=128):
         super().__init__("Capsule")
         self.embed_size = embed_size

@@ -5,6 +5,9 @@ from tqdm import tqdm
 import numpy as np
 import pandas as pd
 
+""" See detail in 
+        <CharBot: A Simple and Effective Method for Evading DGA Classifier> 
+"""
 class CharBot(object):
     def __init__(self, seed=None):
         if seed is not None:
@@ -13,24 +16,17 @@ class CharBot(object):
             self.seed = (int)(time.time())
     
     def generate(self, dga_num, save_path, benign_num=10000, min_len=6):
-        print("Loading Alexa top 1 million domains...")
-        
-        """ Load and preprocess """
-        alexa_path = "./dataset/CharBot/Alexa.csv"
-        # domains = list(pd.read_csv("./dataset/original/Alexa-top-1m.csv", header=None)[1])
-        # for i in range(len(domains)):
-        #     domains[i] = domains[i].split(".")[0]
+        """ Load Alexa and preprocess """
+        domains = list(pd.read_csv("./dataset/benign/Alexa-top-1m.csv", header=None)[1])
+        for i in range(len(domains)):
+            domains[i] = domains[i].split(".")[0]
     
-        # domains = np.asarray(domains)
-        # lens = np.array([len(d) for d in domains])
-        # idx = np.argwhere(lens >= 6)
-        # domains = domains[idx]
+        domains = np.asarray(domains)
+        lens = np.array([len(d) for d in domains])
+        idx = np.argwhere(lens >= 6)
+        domains = domains[idx]
         
-        # df = pd.DataFrame(domains)
-        # df.to_csv(alexa_path, header=None, index=None)
-        
-        domains = list(pd.read_csv(alexa_path, header=None)[0])
-        benign_num = min(benign_num, 1000000)
+        benign_num = min(benign_num, len(domains))
         domains = random.sample(domains, benign_num)
 
         """ Generate """

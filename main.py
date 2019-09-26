@@ -40,7 +40,7 @@ if __name__ == "__main__":
    session = tf.Session(config=config)
    set_session(session)
 
-   data_file = "./dataset/.cache/100w_10w_0.pkl"
+   data_file = "./dataset/.cache/data.pkl"
    with open(data_file, "rb") as fp:
       dataUtils = pickle.load(fp) 
         

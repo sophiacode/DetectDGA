@@ -1,3 +1,3 @@
 # DetectDGA
 
-Some classifiers for detecting DGA.
+Some classifiers for DGA detection.

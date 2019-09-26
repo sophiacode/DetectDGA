@@ -1,4 +1,4 @@
 # DetectDGA
 
-Some classifiers for detecting DGA.
-Run main.py to conduct expriments.
+# Some classifiers for detecting DGA.
+# Run main.py to conduct expriments.
